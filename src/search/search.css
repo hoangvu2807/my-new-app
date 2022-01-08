@@ -1,0 +1,12 @@
+.searchPage {
+    display: grid;
+    max-width: 30rem;
+    padding: 2rem;
+    text-align: center;
+  }
+  
+  .searchResultsList {
+    display: grid;
+    grid-gap: 2rem;
+  }
+  
