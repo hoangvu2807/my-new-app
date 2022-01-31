@@ -1,6 +1,9 @@
 import { app, BrowserWindow} from 'electron';
 //import { remote, ipcRenderer } from 'electron'
 //import { FindInPage } from 'electron-find-in-page'
+import React from "react";
+import { SearchPanel } from "react-search-panel";
+//import "react-search-panel/dist/index.css";
 
 
 
@@ -67,5 +70,3 @@ app.on('activate', () => {
 // code. You can also put them in separate files and import them here.
 // Pass current browser window's WebContents instance
 //const searchInPage = require('electron-in-page-search').default;
-
-

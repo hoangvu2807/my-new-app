@@ -1,8 +1,9 @@
 import React from "react";
 import { Post } from "../post/post";
 import { getSearchResults } from "./search.util";
-
+import SelectSearch from 'react-select-search';
 import "./search.css";
+
 
 export class SearchPage extends React.Component {
   constructor(props) {
@@ -14,6 +15,7 @@ export class SearchPage extends React.Component {
   }
 
   onKeyUp = (event) => {
+    console.log(event)
     // if (event.key === "Enter") {
     let term = event.target.value;
     this.setState({
@@ -23,15 +25,29 @@ export class SearchPage extends React.Component {
     // }
   };
 
+  onChange = event => {
+    console.log(event)
+  }
+
+
   render() {
     return (
+      
       <div className={"searchPage"}>
         <div>
           <input
+            type = "text"
             placeholder="Search"
-            defaultValue="hello"
+            //defaultValue="hello"
             onKeyUp={this.onKeyUp}
           />
+         
+          <SelectSearch options={
+            [
+              {name: 'Swedish', value: 'sv'},
+              {name: 'English', value: 'en'}
+            ]
+          } name="language" placeholder="Choose your language" search={true} onChange={() => input("")}/>
         </div>
         {this.state.searchTerm && (
           <p>Search results for {this.state.searchTerm}</p>
@@ -42,7 +58,12 @@ export class SearchPage extends React.Component {
               <Post key={post.id} content={post.content} index={index} />
             ))}
         </div>
+        
       </div>
     );
   }
+  
+}
+function showSuggestions(){
+
 }
