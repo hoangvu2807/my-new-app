@@ -3,7 +3,7 @@ import React, { useState,useEffect  } from 'react';
 //import { SearchPage } from "./search/search.page";
 
 
-import { SearchPanel, SearchPanelChoice, SearchPanelVariant } from "react-search-panel";
+import { SearchPanel, SearchPanelVariant } from "react-search-panel";
 import { getSearchResults } from './search/search.util'
  
 /* const App = () => {
@@ -44,7 +44,9 @@ const styles = {
 const preselectedChoices = [{ key: "38963", description: "The Mandalorian" }, { key: "563", description: "Star Wars: The Clone Wars" }];
 const App = () => {
     const [input, setInput] = useState("");
+    // khai báo state, sử dụng hook: useState
     const [variant, setVariant] = useState(SearchPanelVariant.checkbox)
+    // SearchPanelVariant : checkbox, link, radio
     const [choices, setChoices] = useState([]);
     const [selectedChoices, setSelectedChoices] = useState(preselectedChoices);
     const [isLoading, setIsLoading] = useState(false);
@@ -81,6 +83,7 @@ const App = () => {
      * Perform a search when input changes.
      */
     useEffect(() => {
+      // đc gọi khi khi component render va results dưới dạng array
       const search = async () => {
         setIsLoading(true);
         const resultChoices = [];
@@ -88,6 +91,7 @@ const App = () => {
         // Only perform a search if end user has typed a minimum number of characters
         if (input.length >= MIN_INPUT) {
            const results = getSearchResults()
+           // lấy results từ data of getSearchResults ở search.util.js
             console.log(results)
           // Transform results to choices.
           results.forEach((result) => {
@@ -105,6 +109,7 @@ const App = () => {
   
     const VariantChoice = (props) => {
       const { label, variantChoice } = props;
+      // props đc truyền vào với values là  variantChoice ở dạng radio
       return (
         <label style={styles.formItem}>
           <input
